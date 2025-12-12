@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productive Planner Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1><i class="fas fa-tasks"></i> Productive Planner Pro</h1>
+            <p class="subtitle">Organize your tasks efficiently</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search tasks...">
+            </div>
+            
+            <div class="task-input-container">
+                <div class="input-group">
+                    <input type="text" id="new-task-input" placeholder="Add a new task...">
+                    <input type="datetime-local" id="task-deadline">
+                    <button id="add-task-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-controls">
+                <div class="stats">
+                    <span id="tasks-remaining">0 tasks remaining</span>
+                    <div class="select-all-container">
+                        <input type="checkbox" id="select-all-checkbox">
+                        <label for="select-all-checkbox">Select All</label>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                    <button class="filter-btn" data-filter="overdue">Overdue</button>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div id="task-list-container">
+                <!-- Tasks will be dynamically inserted here -->
+                <div class="empty-state" id="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No tasks to display</h3>
+                    <p>Add a new task or load sample tasks from the API</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="notification-permission">
+                <p><i class="fas fa-bell"></i> Enable notifications for deadline reminders</p>
+                <button id="notification-btn" class="btn btn-secondary">Enable Notifications</button>
+            </div>
+            <p class="footer-note">Tasks are saved locally in your browser</p>
+        </footer>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Task</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit-task-description">Task Description</label>
+                    <input type="text" id="edit-task-description">
+                </div>
+                <div class="form-group">
+                    <label for="edit-task-deadline">Deadline (Optional)</label>
+                    <input type="datetime-local" id="edit-task-deadline">
+                </div>
+                <div class="form-group">
+                    <label for="edit-task-priority">Priority</label>
+                    <select id="edit-task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button id="save-edit-btn" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
